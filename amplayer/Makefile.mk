@@ -85,5 +85,5 @@ clean:$(CLRDIR)
 
 install:$(target_all)
 	-install  $(INSTALL_FLAGS)	$(target_all)  $(INSTALL_DIR)
-	-install  $(INSTALL_FLAGS) $(DIRS:%/=$(SRC)/%/include/*)  $(STAGING)/include
+	-install  $(INSTALL_FLAGS) $(DIRS:%/=$(SRC)/player/include/*) $(STAGING)/include
 	
