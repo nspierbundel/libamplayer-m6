@@ -37,8 +37,9 @@
 #include "libavutil/lfg.h"
 #include "http.h"
 
+
 #ifndef ANDROID
-static char * strndup(const char* s, size_t n) {
+static char * am_strndup(const char* s, size_t n) {
   size_t l = strlen(s);
   char *r = NULL;
 
@@ -441,7 +442,8 @@ static int list_open(URLContext *h, const char *filename, int flags)
              /*"Range: bytes=0- \r\n"*/
              "X-Playback-Session-Id: %s\r\n%s", sess_id,h!=NULL&&h->headers!=NULL?h->headers:"");
     av_log(NULL, AV_LOG_INFO, "Generate ipad http request headers,\r\n%s\n", headers);
-    mgt->ipad_ex_headers = strndup(headers, 1024);
+    mgt->ipad_ex_headers = am_strndup(headers, 1024);
+
    
     memset(headers, 0, sizeof(headers));
     generate_playback_session_id(sess_id, 37);
@@ -450,7 +452,7 @@ static int list_open(URLContext *h, const char *filename, int flags)
              "X-Playback-Session-Id: %s\r\n%s", sess_id,h!=NULL&&h->headers!=NULL?h->headers:"");
     av_log(NULL, AV_LOG_INFO, "Generate ipad http request media headers,\r\n%s\n", headers);
     
-    mgt->ipad_req_media_headers = strndup(headers, 1024);
+    mgt->ipad_req_media_headers = am_strndup(headers, 1024);
 
     gListMgt = mgt;
     if ((ret = list_open_internet(&mgt->cur_uio, mgt, mgt->filename, flags | URL_MINI_BUFFER | URL_NO_LP_BUFFER)) != 0) {

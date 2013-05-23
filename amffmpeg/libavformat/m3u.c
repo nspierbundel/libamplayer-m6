@@ -366,7 +366,7 @@ static int m3u_format_parser(struct list_mgt *mgt,ByteIOContext *s)
 		mgt->prefix = NULL;
 	}		
 	if(oprefix){
-		mgt->prefix = strdup(oprefix);
+		mgt->prefix = av_strdup(oprefix);
 		
 		char *tail,*tailex,*extoptions;
 		extoptions=strchr(oprefix,'?');/*ext options is start with ? ,we don't need in nested*/

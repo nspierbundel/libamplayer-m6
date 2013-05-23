@@ -17,7 +17,7 @@ TARGET_OBJS += audiodsp_update_format.c
 
 INSTALL_DIR=${M_PREFIX}/lib
 
-LDFLAGS += -shared -lpthread -lm -lasound -lrt
+LDFLAGS += -shared -lpthread -lm -lasound -lrt -fPIC
 
 TARGET_DIR=$(shell pwd)/../../../target
 STAGING_DIR=$(shell pwd)/../../../staging
