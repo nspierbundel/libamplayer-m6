@@ -1,2 +1,2 @@
-libamplayer-m3
+libamplayer-m6
 ==============
